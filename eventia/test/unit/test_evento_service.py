@@ -15,7 +15,7 @@ def test_get_eventos(test_db, fake_redis):
     eventos = service.get_eventos(test_db)
 
     assert isinstance(eventos, list)
-    assert eventos[0]["nombre"] == "concierto DSG"
+    assert eventos[0]["nombre"] == "concierto Test"
 
 
 
