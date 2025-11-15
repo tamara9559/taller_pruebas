@@ -29,7 +29,7 @@ jobs:
 
     - name: Ejecutar pruebas unitarias
       run: |
-        pytest eventia//unit --maxfail=1 --disable-warnings
+        pytest eventia/test/unit --maxfail=1 --disable-warnings
 
     - name: Ejecutar pruebas de integración
       run: |
