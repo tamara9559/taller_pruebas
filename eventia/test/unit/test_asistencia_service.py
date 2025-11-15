@@ -5,8 +5,8 @@ from app.models.participante import Participante
 from app.models.evento import Evento
 from app.models.asistencia import Asistencia
 
-def test_listar_asistencias(test_db):
-    service = AsistenciaService()
+def test_listar_asistencias(test_db, fake_redis):
+    service = AsistenciaService(redis_client=fake_redis)
 
     participante = Participante(nombre="Ana")
     evento = Evento(nombre="Evento X", capacidad=50)
@@ -26,7 +26,6 @@ def test_listar_asistencias(test_db):
 
     asistencias = service.get_asistencias(test_db, evento.id_evento)
 
-    # Como get_asistencias devuelve diccionarios,
-    # debes validar así:
     assert len(asistencias) == 1
     assert asistencias[0]["id_persona"] == participante.id_persona
+

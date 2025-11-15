@@ -76,13 +76,20 @@ def fake_redis():
             self.store = {}
 
         def get(self, key):
-            return self.store.get(key)
+            value = self.store.get(key)
+            if value is None:
+                return None
+            return value  # bytes, igual que redis real
 
-        def set(self, key, value):
+        def set(self, key, value, ex=None):
+            # value debe guardarse como bytes
+            if isinstance(value, str):
+                value = value.encode("utf-8")
             self.store[key] = value
 
         def delete(self, key):
             self.store.pop(key, None)
 
     return FakeRedis()
+
 
