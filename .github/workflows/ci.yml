@@ -26,11 +26,11 @@ jobs:
 
     - name: Ejecutar pruebas unitarias
       run: |
-        pytest tests/unit --maxfail=1 --disable-warnings
+        pytest eventia/tests/unit --maxfail=1 --disable-warnings
 
     - name: Ejecutar pruebas de integración
       run: |
-        pytest tests/integration --maxfail=1 --disable-warnings
+        pytest eventia/tests/integration --maxfail=1 --disable-warnings
 
     - name: Análisis estático de seguridad (Bandit)
       run: |
