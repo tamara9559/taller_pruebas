@@ -153,3 +153,10 @@ Pytest
 
 Simple y poderoso para pruebas unitarias
 Permite fixtures como DB en memoria o mocks de Redis
+
+
+
+
+
+
+hecho por juan diego támara escobar
