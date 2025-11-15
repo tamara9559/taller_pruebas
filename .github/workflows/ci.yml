@@ -10,6 +10,9 @@ jobs:
   build-test:
     runs-on: ubuntu-latest
 
+    env:
+      ENV: TEST   # <<<<<< EVITA CONEXIÓN A MYSQL DURANTE TESTS
+
     steps:
     - name: Checkout código
       uses: actions/checkout@v3
@@ -26,7 +29,7 @@ jobs:
 
     - name: Ejecutar pruebas unitarias
       run: |
-        pytest eventia/test/unit --maxfail=1 --disable-warnings
+        pytest eventia//unit --maxfail=1 --disable-warnings
 
     - name: Ejecutar pruebas de integración
       run: |
@@ -40,8 +43,8 @@ jobs:
     - name: Pruebas de sistema (opcional)
       if: always()
       run: |
-        if [ -d "tests/system" ]; then
-          pytest tests/system
+        if [ -d "eventia/test/system" ]; then
+          pytest eventia/test/system
         else
           echo "No hay pruebas de sistema."
         fi
@@ -53,3 +56,4 @@ jobs:
     - name: Algo falló
       if: failure()
       run: echo "Pipeline FAILED"
+
